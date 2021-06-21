@@ -1,0 +1,102 @@
+
+.note {
+    position: relative;
+    max-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transform: scale(1.1) translateY(-20px);   
+    transition: 1s ease, 0s padding, 0s margin, 0s border, 0.6s max-height ease, 0.6s width ease;
+    animation: animateNote 1s ease calc(var(--order) * 100ms) forwards;
+    cursor: pointer;
+    z-index: 5;
+}
+
+@keyframes animateNote {
+    to{
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.notesContainer.gridView .note {
+    max-height: 280px;
+    min-width: 200px;
+    max-width: 31%;
+    margin: 0.5em 0 0 0.5em;
+    -webkit-line-clamp: 7;
+}
+
+.removeNote {
+    max-height: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    /* margin: 0 !important; */
+    /* padding: 0 !important; */
+    /* border-radius: 50% !important; */
+    /* transform: scale(0) translateY(0) !important; */
+    /* opacity: 0 !important; */
+    /* z-index: 0 !important; */
+}
+
+.removeNote * {
+    opacity: 0 !important;
+}
+
+.note.hidden {
+    opacity: 0;
+    transform: scale(0);
+    max-height: 0 !important;
+    max-width: 0 !important;
+    min-width: 0 !important;
+    /* border: 0px !important; */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.note.hidden * {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.note .creationDate {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.note .title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 75%;
+}
+
+.note .title::first-letter {
+    text-transform: uppercase;
+}
+
+.note .content {
+    width: fit-content;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
+    font-size: medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-height: 1.5em;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+    transition: 0.5s ease;
+}
+
+.note.animating .content {
+    visibility: hidden;
+    opacity: 0 !important;
+    transform: scale(0.9) translateY(5px);
+    transition: 0s;
+    transition-delay: 0;
+}

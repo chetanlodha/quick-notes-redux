@@ -1,0 +1,16 @@
+.button {
+  position: relative;
+  background-color: rgba(0,0,0,0.2);
+  color: wheat;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 0.7em 1em;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+    transform: scale(1.07) translateY(-5px);
+}

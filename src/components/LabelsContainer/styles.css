@@ -1,0 +1,26 @@
+.container.content .labelsContainer {
+  overflow: hidden;
+}
+
+/* .container.content .labels.scrollable {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1),
+    transparent 10% 90%,
+    rgba(0, 0, 0, 0.1)
+  ) !important;
+} */
+
+.container.content.contentClassAddOn .labelsContainer {
+  display: none !important;
+}
+
+.labels {
+  overflow-x: scroll;
+  overflow-y: visible;
+  width: 100%;
+}
+
+.container.content.contentClassAddOn .labelsContainer {
+  display: none !important;
+}

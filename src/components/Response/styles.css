@@ -1,0 +1,36 @@
+.response {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s ease;
+  }
+  
+  .response.visible {
+    bottom: 1em;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .response.success {
+    background-color: #cefccb;
+  }
+  
+  .response.failed {
+    background-color: #ffbfc8;
+  }
+  
+  .response .text {
+    white-space: pre-line;
+  }
+  
+  .response .text.success {
+    color: #4bad44;
+  }
+  
+  .response .text.failed {
+    color: #fa566c;
+  }

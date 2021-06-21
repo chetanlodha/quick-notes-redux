@@ -1,39 +1,195 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&display=swap");
+:root {
+  --gradient: linear-gradient(
+    100.5deg,
+    rgba(148, 146, 236, 1) 17.7%,
+    rgba(245, 194, 194, 1) 76.1%
+  );
+  --transparent-white: rgba(255, 255, 255, 0.3);
+  --transparent-dark: rgba(0, 0, 0, 0.1);
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(63, 36, 36, 0.2);
+  --accent-primary: wheat;
+  --accent-primary-dark: rgba(245, 222, 179, 0.6);
+  /* --openSans: 'Open Sans', sans-serif; */
+  --rajdhani: "Rajdhani", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: var(--rajdhani);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-.App-header {
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+    100.5deg,
+    rgba(148, 146, 236, 1) 17.7%,
+    rgba(245, 194, 194, 1) 76.1%
+  );
+  scrollbar-color: white transparent;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.dimBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  z-index: -1;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+.dimBackground.visible {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 15;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(245, 194, 194, 1);
+  /* body's scrollbar track color */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(121, 119, 190);
+  border-radius: 30px;
+  border: 0;
+  /* controls body's scrollbar thumb */
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+  height: 4px;
+  /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.6);
+  /* color of the scroll thumb */
+  border-radius: 30px;
+  /* roundness of the scroll thumb */
+  border: 0;
+  /* creates padding around scroll thumb */
+}
+
+:link,
+a {
+  color: black;
+}
+
+:link:hover {
+  text-decoration: none;
+}
+
+.labels::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+.rounded-lg {
+  border-radius: 15px !important;
+}
+
+.form-control {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 3px solid transparent !important;
+  font-size: 1.2em;
+  color: wheat !important;
+  box-shadow: 0 0 5px var(--shadow-light);
+  transition: 0.3s ease;
+}
+
+.form-control:focus {
+  border: 3px solid var(--accent-primary-dark);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 5px var(--shadow-light);
+}
+
+/* .shadow{
+	box-shadow: 0 0 15px var(--shadow) !important;
+} */
+
+.shadow {
+  box-shadow: 0 0 15px var(--shadow-light) !important;
+}
+
+.form-control::placeholder {
+  color: var(--accent-primary-dark);
+  font-size: 1.1em;
+}
+
+
+@media(max-width: 768px) {
+  .toggleGridView {
+      display: none !important;
   }
-  50% {
-    transform: translateY(10px);
+  .profile-card {
+      background-image: linear-gradient( 100.5deg, #D9C2DC 17.7%, #F1C9D1 76.1%);
   }
-  100% {
-    transform: translateY(0px);
+  .updateProfileContainer {
+      background-image: linear-gradient( 100.5deg, #6E6E92 17.7%, #938082 76.1%);
+  }
+  .createNoteFormContainer {
+      background-image: linear-gradient( 100.5deg, #727296 17.7%, #927F81 76.1%);
+  }
+  .createNoteFormContainer.visible {
+      width: 95vw;
+      right: 2vw;
+      transform: scale(1);
+      opacity: 1;
+  }
+  .updateNoteContainer {
+      top: 9vh;
+      background-image: linear-gradient( 100.5deg, #6E6E92 17.7%, #938082 76.1%);
+      will-change: transform, opacity;
+  }
+
+  .notesContainer.gridView .note {
+      min-width: 100%;
+      margin: 0.5em 0 0 0;
+      /* max-width: 100%; */
+  }
+  .note {
+      max-height: 230px;
+      will-change: transform;
+  }
+  .note .title {
+      font-size: 1.25em;
+  }
+  .note .creationDate {
+      font-size: 0.95em;
+  }
+  .note .content {
+      font-size: 1.1em;
   }
 }

@@ -1,0 +1,91 @@
+.container .labelsContainer:first-child .label:active {
+  transform: scale(1) !important;
+}
+
+.container .labelsContainer:first-child .label:hover {
+  transform: scale(1.2) translateY(-5px);
+}
+
+.container .labelsContainer{
+    overflow: visible !important;
+}
+
+.labels span {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 0.85em;
+  color: #505050;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.updateNoteContainer .labels span,
+.createNoteFormContainer .labels span {
+  color: navajowhite;
+}
+
+.label {
+  border: 2px solid rgb(121, 119, 190, 0);
+  cursor: pointer;
+  transition: 0.2s transform ease;
+  /* animation: animateLabelIn 1s ease calc(var(--order) * 100ms) forwards; */
+}
+
+@keyframes animateLabelIn {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.label.active {
+  border: 2px solid rgb(121, 119, 190, 0.4);
+  background: rgb(121, 119, 190, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2) translateY(-5px);
+}
+
+.label:first-child.active {
+  transform: scale(1) translateY(0);
+}
+
+.label:last-child.active {
+  transform: scale(1.2) translateY(-5px) translateX(5px);
+}
+
+.label div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  opacity: 0;
+  border-radius: 999px;
+  transition: 0.3s ease;
+}
+
+.label:hover div {
+  opacity: 1;
+}
+
+.label .removeLabel {
+  margin: auto;
+  color: white;
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.3s ease;
+}
+
+.label:hover .removeLabel {
+  opacity: 1;
+  transform: scale(1) translateY(-1px);
+}

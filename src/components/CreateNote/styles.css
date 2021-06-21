@@ -1,0 +1,14 @@
+.createNoteButton {
+    background-color: #F6D3D3;
+    position: fixed;
+    bottom: 4vh;
+    right: 7vw;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    z-index: 10;
+    box-shadow: 0 1px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.5s ease;
+}

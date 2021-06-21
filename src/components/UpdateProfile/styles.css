@@ -1,0 +1,42 @@
+.updateProfileContainer {
+  max-height: 85vh;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  padding: 1em;
+  opacity: 0;
+  visibility: hidden;
+  background-image: linear-gradient(100.5deg, #6e6d8f 17.7%, #958182 76.1%);
+  /* background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(20px); */
+  border-radius: 7px;
+  transform-style: preserve-3d;
+  transform: perspective(106px) rotateX(6deg) scale(0.9);
+  transform-origin: bottom center;
+  transition: 0.5s ease;
+  z-index: 20;
+}
+
+.updateProfileContainer.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: perspective(106px) rotateX(0deg) scale(1);
+}
+
+.updateProfileContainer div h2 {
+  color: wheat;
+}
+
+/* .updateProfileContainer div .actionBar .fa{
+    color: white;
+    color: whitesmoke;
+} */
+
+.updateProfileContainer div .actionBar .fa-check-circle:hover {
+  color: black;
+  /* color: whitesmoke; */
+}
+
+.updateProfileForm label {
+  color: rgb(206, 187, 152);
+}

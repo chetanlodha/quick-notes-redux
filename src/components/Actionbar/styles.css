@@ -1,0 +1,82 @@
+.actionBar {
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.actionBar i, .icon, .toggleGridView {
+    cursor: pointer;
+    transition: 0.3s ease;}
+
+.actionBar .fa:hover, .toggleGridView:hover {
+    background-color: #b2aaee;
+    color: black;
+}
+
+.toggleGridView.active {
+    background-color: #b2aaee;
+    animation: 0.3s animateToggleGridView ease;
+}
+
+@keyframes animateToggleGridView {
+    0% {
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.actionBar .fa-times:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+.actionBar .fa{
+    padding: 8px 9px;
+}
+
+.actionBar .fa-tag.hidden {
+    display: none;
+}
+
+.actionBar .inputWithActionContainer {
+    /* background-color: rgba(255, 255, 255, 0.2); */
+    max-width: 0;
+    border-radius: 50%;
+    transform: scale(0);
+    transform-origin: center;
+    transition: 0.8s ease;
+}
+
+.actionBar .inputWithActionContainer.visible {
+    max-width: 100%;
+    transform: scale(1);
+}
+
+.inputWithActionContainer input {
+    /* background-color: transparent !important; */
+}
+
+.actionBar input {
+    box-shadow: none;
+    font-size: 1em;
+    padding-right: 1.8em;
+}
+
+
+.actionBar .inputWithActionContainer.visible .addLabelToNote {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    transition: transform 0.3s ease 0.7s, background-color 0.3s ease 0s;
+}
+
+.actionBar .addLabelToNote {
+    transform: scale(0);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+}

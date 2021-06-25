@@ -1,3 +1,3 @@
 cd..
-cd Quick-Notes-Backend
+cd quick-notes-backend
 nodemon server

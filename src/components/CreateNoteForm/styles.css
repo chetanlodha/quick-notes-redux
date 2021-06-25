@@ -1,25 +1,23 @@
 .createNoteFormContainer {
     background-image: linear-gradient( 100.5deg, #827A89 17.7%, #937F80 76.1%);
     position: fixed;
-    bottom: 3vh;
-    right: 6vw;
-    width: 100px;
-    height: 100px;
-    opacity: 0.2;
-    border-radius: 2em !important;
+    bottom: 4vh;
+    right: 7vw;
+    height: 85vh;
+    width: 43vw;
+    opacity: 0;
     transform: scale(0);
+    transform-origin: bottom right;
     transition: 0.7s ease;
-    overflow: hidden;
     z-index: 999;
+    will-change: transform opacity;
 }
 
 .createNoteFormContainer.visible {
-    border-radius: 15px !important;
-    height: 85vh;
-    width: 43vw;
     transform: scale(1);
+    transform-origin: center !important;
     opacity: 1;
-    transition: 0.9s ease;
+    transition: 0.7s ease;
 }
 
 .createNoteFormContainer.visible .createNoteFormContainerInner {

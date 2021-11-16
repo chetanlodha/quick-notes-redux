@@ -24,10 +24,6 @@ const UpdateProfile = () => {
                 break
             case 'old-password': setOldPassword(value)
                 break
-            // case 'name': setName(value)
-            //     break
-            // case 'email': setEmail(value)
-            //     break
             default: console.log("Something went wrong")
         }
     }
@@ -79,7 +75,7 @@ const UpdateProfile = () => {
                 <form className="updateProfileForm my-3 mx-4 d-flex flex-column">
                     {/* <Input name="name" placeholder="Enter new name..." value={name} onChange={onChange} type="text"></Input>
                     <Input name="email" placeholder="Enter new email..." value={email} onChange={onChange} type="email"></Input> */}
-                    <Input name="old password" placeholder="Enter old password..." value={password} onChange={onChange} type="password"></Input>
+                    <Input name="old-password" placeholder="Enter old password..." value={oldPassword} onChange={onChange} type="password"></Input>
                     <Input name="password" placeholder="Enter new password..." value={password} onChange={onChange} type="password"></Input>
                 </form>
                 <Response response={response} />

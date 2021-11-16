@@ -67,7 +67,7 @@ const Register = ({ history }) => {
                 <h2 className="text-center mb-3">Register</h2>
                 <hr className="mt-0 ml-2 w-25 mx-auto" />
                 <form className="d-flex flex-column justify-content-center align-items-center mt-2 px-2" method="POST" onSubmit={onSubmit}>
-                    <Input name="name" placeholder="Name..." value={name} onChange={onChange} showLabel={true} type="name" />
+                    <Input name="name" placeholder="Name..." value={name} onChange={onChange} showLabel={true} type="text" />
                     <Input name="email" placeholder="Email..." value={email} onChange={onChange} showLabel={true} type="email" />
                     <Input name="password" placeholder="Password..." value={password} onChange={onChange} type="password" showLabel={true} />
                     <Input name="confirmPassword" placeholder="Confirm password..." value={confirmPassword} onChange={onChange} type="password" showLabel={true} />

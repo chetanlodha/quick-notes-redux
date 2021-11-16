@@ -28,13 +28,15 @@ const Note = ({ index, _id, title, content, labels, images, date, homeLabels, se
         e.stopPropagation();
         axios.delete(`https://quicknotes-backend.herokuapp.com/api/notes/${_id}`)
             .then(response => {
-                // console.log(response)
-                let newLabels = homeLabels.filter(label => !labels[0].includes(label))
+                console.log(response, labels[0], labels)
                 setRemoved(!isRemoved)
                 setTimeout(() => dispatch(deleteNote({ id: _id })), 800)
-                setHomeLabels(newLabels)
+                if (labels.length) {
+                    let newLabels = homeLabels.filter(label => !labels[0].includes(label))
+                    setHomeLabels(newLabels)
+                }
             })
-            .catch(error => console.log(error.response.data));
+            .catch(error => console.log(error));
         console.log(notes)
 
     }

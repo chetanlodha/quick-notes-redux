@@ -11,7 +11,7 @@
     opacity: 0;
     transform: scale(1.1) translateY(-20px);   
     transition: 1s ease, 0s padding, 0s margin, 0s border, 0.6s max-height ease, 0.6s width ease;
-    animation: animateNote 1s ease calc(var(--order) * 100ms) forwards;
+    animation: animateNote 1s ease calc(var(--order) * 150ms) forwards;
     cursor: pointer;
     z-index: 5;
 }

@@ -33,7 +33,7 @@ const UpdateProfile = () => {
             oldPassword: oldPassword,
             password: password
         }
-        axios.post(`https://quicknotes-backend.herokuapp.com/api/users/updateProfile/${user.id}`, data)
+        axios.post(`https://quick-notes-backend.onrender.com/api/users/updateProfile/${user.id}`, data)
             .then(res => {
                 handleResponse(res)
             })

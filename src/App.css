@@ -155,9 +155,9 @@ h6 {
       opacity: 1;
   }
   .updateNoteContainer {
-      top: 9vh;
+      /* top: 9vh; */
       background-image: linear-gradient( 100.5deg, #6E6E92 17.7%, #938082 76.1%);
-      will-change: transform, opacity;
+      /* will-change: transform, opacity; */
   }
 
   .notesContainer.gridView .note {

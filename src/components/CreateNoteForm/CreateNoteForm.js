@@ -34,7 +34,7 @@ const CreateNoteForm = ({ homeLabels, setHomeLabels }) => {
             labelSelector.forEach(label => labels.push(label.textContent));
             formData.append('labels', labels);
         }
-        axios.post(`https://quicknotes-backend.herokuapp.com/api/notes/create/${userId}`, formData)
+        axios.post(`https://quick-notes-backend.onrender.com/api/notes/create/${userId}`, formData)
             .then(res => {
                 console.log(res.data);
                 dispatch(addNote(res.data))

@@ -49,7 +49,7 @@ const Register = ({ history }) => {
             email: email,
             password: password,
         }
-        axios.post('https://quicknotes-backend.herokuapp.com/api/users/register', data)
+        axios.post('https://quick-notes-backend.onrender.com/api/users/register', data)
             .then(res => {
                 if(!res.status === 200)
                     alert(res.data)

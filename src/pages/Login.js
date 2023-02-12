@@ -20,7 +20,7 @@ const Login = ({ history }) => {
 
     const handleLogin = e => {
         e.preventDefault()
-        axios.post('https://quicknotes-backend.herokuapp.com/api/users/login', {
+        axios.post('https://quick-notes-backend.onrender.com/api/users/login', {
             email: email,
             password: password
         })

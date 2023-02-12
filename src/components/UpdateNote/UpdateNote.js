@@ -13,9 +13,10 @@ import Input from '../Input/Input'
 import Textarea from '../Textarea/Textarea'
 import Response from '../Response/Response'
 import DimBackground from '../Dimbackground/DimBackground'
+import { motion } from 'framer-motion'
 
 
-const UpdateNote = () => {
+const UpdateNote = ({setSelectedId}) => {
 
     const dispatch = useDispatch()
     const currentNote = useSelector(state => state.modals.updateNoteModal)
@@ -34,7 +35,7 @@ const UpdateNote = () => {
             title: titleRef.current.value,
             content: contentRef.current.value
         }
-        axios.post(`https://quicknotes-backend.herokuapp.com/api/notes/update/${id}`, data)
+        axios.post(`https://quick-notes-backend.onrender.com/api/notes/update/${id}`, data)
             .then(res => {
                 handleResponse(res.data)
                 dispatch(updateNote({ id: id, title: data.title, content: data.content }))
@@ -70,7 +71,7 @@ const UpdateNote = () => {
 
     const closeUpdateNote = () => {
         resetForm()
-        dispatch(toggleUpdateNoteModal({ id: '', title: '', content: '', labels: [], images: [] }))
+        dispatch(toggleUpdateNoteModal({ id: null, title: '', content: '', labels: [], images: [] }))
     }
 
     useEffect(() => {
@@ -85,8 +86,9 @@ const UpdateNote = () => {
 
     return (
         <DimBackground isChildVisible={id !== ''} toggleChild={closeUpdateNote}>
-            <section className={`updateNoteContainer ${(id !== '') ? 'visible' : ''} container position-absolute shadow rounded-lg`}>
-                <div className={`updateNoteContainerInner ${imagesContainer.isVisible ? 'hidden' : ''} container d-flex flex-column pb-3 px-0`}>
+            <motion.section layoutId={id} className={`updateNoteContainer ${(id !== '') ? 'visible' : ''} container position-absolute shadow rounded-lg`}>
+                <div  className={`updateNoteContainerInner ${imagesContainer.isVisible ? 'hidden' : ''} container d-flex flex-column pb-3 px-0`}>
+                    {console.log(id)}
                     <Actionbar className="actionBar d-flex flex-column flex-md-row justify-content-between">
                         <LabelsContainer className='labels d-flex flex-row-reverse justify-content-end flex-wrap flex-shrink-1 
                         align-items-center py-2 order-2 order-md-1'>
@@ -118,7 +120,7 @@ const UpdateNote = () => {
                 </div>
                 <ImagesContainer />
                 <Response response={response} />
-            </section>
+            </motion.section>
         </DimBackground>
     )
 }

@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteNote } from '../../redux/slices/notesSlice'
 import Actionbar from '../Actionbar/Actionbar'
 import { toggleImageModal, toggleUpdateNoteModal } from '../../redux/slices/modalSlice'
+import { motion } from "framer-motion"
 
-const Note = ({ index, _id, title, content, labels, images, date, homeLabels, setHomeLabels }) => {
+const Note = ({ index, _id, title, content, labels, images, date, homeLabels, setHomeLabels, setSelectedId }) => {
 
     // eslint-disable-next-line
     const notes = useSelector(state => state.notes)
@@ -26,7 +27,7 @@ const Note = ({ index, _id, title, content, labels, images, date, homeLabels, se
 
     const removeNote = (e) => {
         e.stopPropagation();
-        axios.delete(`https://quicknotes-backend.herokuapp.com/api/notes/${_id}`)
+        axios.delete(`https://quick-notes-backend.onrender.com/api/notes/${_id}`)
             .then(response => {
                 console.log(response, labels[0], labels)
                 setRemoved(!isRemoved)
@@ -47,7 +48,7 @@ const Note = ({ index, _id, title, content, labels, images, date, homeLabels, se
     }
 
     return (
-        <div className={`note d-flex flex-column rounded-lg ${isVisible ? 'animateNote' : ''} ${isRemoved ? 'removeNote p-0' : 'mt-2'}
+        <motion.div layoutId={_id} className={`note d-flex flex-column rounded-lg ${isVisible ? 'animateNote' : ''} ${isRemoved ? 'removeNote p-0' : 'mt-2'}
         ${isNoteFiltered()}`}
             style={{ "--order": `${index + 1}` }}
             onClick={() => dispatch(toggleUpdateNoteModal({ id: _id, title, content, labels, images }))}>
@@ -77,7 +78,7 @@ const Note = ({ index, _id, title, content, labels, images, date, homeLabels, se
                     }
                 </div>
             }
-        </div >
+        </motion.div >
     )
 }
 

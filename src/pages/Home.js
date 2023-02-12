@@ -13,6 +13,7 @@ import UpdateNote from '../components/UpdateNote/UpdateNote'
 import CreateNote from '../components/CreateNote/CreateNote'
 import ImagesContainer from '../components/ImagesContainer/ImagesContainer'
 import UpdateProfile from '../components/UpdateProfile/UpdateProfile'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Home = ({ history }) => {
     const dispatch = useDispatch()
@@ -21,11 +22,13 @@ const Home = ({ history }) => {
     // eslint-disable-next-line
     const notes = useSelector(state => state.notes)
     const [labels, setLabels] = useState([])
+    const currentNote = useSelector(state => state.modals.updateNoteModal)
+    const id = currentNote.id
 
     useEffect(() => {
         if (!user.id)
             return
-        axios.get(`https://quicknotes-backend.herokuapp.com/api/notes/getAllNotes/${user.id}`)
+        axios.get(`https://quick-notes-backend.onrender.com/api/notes/getAllNotes/${user.id}`)
             .then(response => {
                 if (!response.data.length)
                     return
@@ -66,7 +69,7 @@ const Home = ({ history }) => {
         <>
             <Navbar name={user.name} />
 
-            <div className={`container content px-1`}>
+            <motion.div layout className={`container content px-1`}>
 
                 <div className="d-flex flex-column flex-md-row align-items-center labelsContainer main">
                     <h6 className="labelHeading pl-3 pr-2 pt-2 pt-md-0 py-md-2 mb-0">Labels</h6>
@@ -81,21 +84,28 @@ const Home = ({ history }) => {
 
                 <NotesContainer>
                     <WelcomeMessage user={user.name} />
-                    {
-                        notes.hasOwnProperty('notes') &&
-                        notes.notes.map((note, index) => <Note key={note._id} index={index} homeLabels={labels} setHomeLabels={setLabels} {...note} />)
-                    }
+                    <AnimatePresence>
+                        {
+                            notes.hasOwnProperty('notes') &&
+                            notes.notes.map((note, index) => <Note key={note._id} index={index} homeLabels={labels} setHomeLabels={setLabels} {...note} />)
+                        }
+                    </AnimatePresence>
                 </NotesContainer>
 
                 <UpdateProfile />
 
-                <UpdateNote />
+
+                <AnimatePresence>
+                    {
+                       id && <UpdateNote />
+                    }
+                </AnimatePresence>
 
                 <CreateNote homeLabels={labels} setHomeLabels={setLabels} />
 
                 <ImagesContainer inHome={true} />
 
-            </div>
+            </motion.div>
         </>
     )
 }

@@ -4,7 +4,7 @@ import './styles.css'
 
 const NoteImage = ({ image }) => {
     const [isLoaded, setLoaded] = useState(false)
-    let url = `https://quicknotes-backend.herokuapp.com`
+    let url = `https://quick-notes-backend.onrender.com`
     return (
         <div className={`${!isLoaded ? '' : 'm-1'}`}>
             <img className={`image rounded-lg ${!isLoaded ? 'd-none' : ''}`}
